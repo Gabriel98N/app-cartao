@@ -1,0 +1,405 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+span,
+a,
+label {
+  display: block;
+  text-decoration: none;
+}
+
+:root {
+  --cor-principal: #613be6;
+  --bg: #1a1a22;
+  --bg1: #24242e;
+  --cor-texto: #fff;
+  --cor-texto2: #858688;
+  --border-color: #e8e9ee;
+}
+
+body,
+html {
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Roboto", "DM Sans", sans-serif;
+  height: 100%;
+  background-color: var(--bg);
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.estrutura {
+  height: 100%;
+}
+
+.modelo-cartao {
+  display: none;
+}
+
+/* Aside */
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: var(--bg1);
+  padding: 60px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-aside li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  color: var(--cor-texto2);
+  transition: 0.3s;
+}
+
+.menu-aside li a:hover {
+  color: var(--cor-texto);
+}
+
+@media (max-width: 1200px) {
+  .aside {
+    width: 100%;
+    height: 80px;
+    top: auto;
+    bottom: 0;
+    padding: 0;
+  }
+
+  .menu-aside {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .menu-aside li a {
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-aside a span {
+    display: none;
+  }
+}
+
+/*  Content  */
+.content {
+  position: relative;
+  left: 250px;
+  top: 0;
+  width: calc(100% - 250px);
+}
+
+.container-formulario {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 27, 27, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.container-formulario.ativar {
+  visibility: visible;
+  opacity: 1;
+}
+
+#form {
+  width: 550px;
+  padding: 60px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.fechar-form {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  background-color: #111;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#form h3 {
+  font-size: 24px;
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#form label {
+  display: block;
+  margin-bottom: 5px;
+  cursor: text;
+}
+
+.column2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.input input,
+.input select,
+.btn-cadastrar {
+  width: 100%;
+  height: 45px;
+  font-size: 1em;
+  font-family: "Roboto", "DM Sans", sans-serif;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #111;
+  padding: 0 15px;
+}
+
+.mensagem {
+  font-size: 0.845em;
+  color: red;
+  display: none;
+}
+
+.btn-cadastrar {
+  background-color: var(--cor-principal);
+  color: #fff;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-cadastrar:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.container-conteudo {
+  padding: 60px;
+}
+
+@media (max-width: 1200px) {
+  .container-conteudo {
+    padding: 30px 15px;
+  }
+  .content {
+    width: 100%;
+    position: relative;
+    left: 0;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 740px) {
+  .column2 {
+    grid-template-columns: 1fr;
+  }
+  #form {
+    padding: 30px 15px;
+  }
+}
+
+.titulo {
+  color: var(--cor-texto);
+  font-size: 40px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.container-card {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.box-card,
+.novo-cartao {
+  width: 330px;
+  height: 200px;
+  border-radius: 15px;
+  padding: 10px;
+  position: relative;
+}
+
+.excluir-cartao {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: inherit;
+  background-color: rgba(38, 38, 41, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.box-card:hover .excluir-cartao {
+  visibility: visible;
+  opacity: 1;
+}
+
+.excluir-cartao a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.novo-cartao {
+  background-color: var(--bg1);
+}
+
+.novo-cartao a {
+  border: 3px dashed var(--cor-principal);
+  height: 100%;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
+  border-radius: inherit;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.logo-bandeira span {
+  color: #fff;
+  font-size: 0.845em;
+}
+
+.logo-cartao {
+  text-align: right;
+}
+
+.info-cliente {
+  font-size: 0.845em;
+  color: #fff;
+}
+
+.nome-cartao {
+  text-align: right;
+}
+
+/*  Cores cartão  */
+[data-id="nu"] {
+  background: #820ad1;
+}
+
+[data-id="inter"] {
+  background: #ff7a00;
+}
+
+[data-id="c6"] {
+  background: #242424;
+}
+
+[data-id="pago"] {
+  background: #141414;
+}
+
+[data-id="next"] {
+  background: #00ff5e;
+}
+
+[data-id="santander"] {
+  background: #e11f1c;
+}
+
+[data-id="inter"] .logo-cartao img,
+[data-id="c6"] .logo-cartao img,
+[data-id="next"] .logo-cartao img {
+  width: 70px;
+  float: right;
+}
+
+[data-id="next"] .logo-bandeira img,
+[data-id="santander"] .logo-bandeira img,
+[data-id="c6"] .logo-bandeira img {
+  width: 80px;
+}
+
+@media (max-width: 1200px) {
+  .container-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+
+  .box-card,
+  .novo-cartao {
+    width: 100%;
+  }
+}
+
+@media (max-width: 740px) {
+  .container-card {
+    grid-template-columns: 1fr;
+  }
+  .titulo {
+    font-size: 24px;
+    line-height: 18px;
+  }
+
+  .novo-cartao {
+    grid-row: 1;
+  }
+}

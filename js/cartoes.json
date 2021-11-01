@@ -1,0 +1,44 @@
+{
+  "cartao": [
+    {
+      "instituicao": "Banco inter",
+      "id": "inter",
+      "bandeira": "img/master-card.png",
+      "logo": "img/logo/inter.svg"
+    },
+    {
+      "instituicao": "Nubank",
+      "id": "nu",
+      "bandeira": "img/master-card.png",
+      "logo": "img/logo/nubank.svg"
+    },
+    {
+      "instituicao": "C6 Bank",
+      "id": "c6",
+      "bandeira": "img/logo-visa.png",
+      "nome_bandeira": "Visa",
+      "logo": "img/logo/c6-bank.svg"
+    },
+    {
+      "instituicao": "Mercado pago",
+      "id": "pago",
+      "bandeira": "img/logo-visa.png",
+      "nome_bandeira": "Visa",
+      "logo": "img/logo/mercado-pago.svg"
+    },
+    {
+      "instituicao": "Next",
+      "id": "next",
+      "bandeira": "img/logo-visa.png",
+      "nome_bandeira": "Visa",
+      "logo": "img/logo/next.svg"
+    },
+    {
+      "instituicao": "Santander",
+      "id": "santander",
+      "bandeira": "img/logo-visa.png",
+      "nome_bandeira": "Visa",
+      "logo": "img/logo/santander.svg"
+    }
+  ]
+}

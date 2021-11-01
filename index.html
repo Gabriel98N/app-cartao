@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@200;600;700&family=Roboto:wght@200;500;700&&family=Raleway:wght@200;500;700&family=Tomorrow:wght@200;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Controle de Gastos</title>
+</head>
+
+<body>
+
+  <div class="modelo-cartao">
+    <div class="box-card" data-id>
+      <div class="excluir-cartao">
+        <a href="#">
+          <i class="material-icons">delete</i>
+        </a>
+      </div>
+      <div class="card">
+        <div class="grid-2">
+          <div class="logo-bandeira">
+            <img src="" alt="">
+          </div>
+          <div class="logo-cartao">
+            <img src="" alt="">
+          </div>
+        </div>
+        <div class="grid-2 info-cliente">
+          <span class="numero-cartao">**** **** **** ****</span>
+          <span class="nome-cartao">--</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="estrutura">
+    <aside class="aside">
+      <ul class="menu-aside">
+        <li>
+          <a href="#">
+            <i class="material-icons">credit_card</i>
+            <span>Meus cartões</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">bar_chart</i>
+            <span>Gráfico</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <div class="content">
+      <div class="container-formulario">
+        <form id="form">
+          <a href="#" class="fechar-form">
+            <i class="material-icons">close</i>
+          </a>
+          <h3>Cadastrar cartão</h3>
+          <div class="input">
+            <label for="bandeira">Instituição</label>
+            <select name="instituicao" id="instituicao" required>
+              <option value="" selected disabled>Selecionar</option>
+              <option value="nu">Nubank</option>
+              <option value="inter">Banco inter</option>
+              <option value="c6">C6 Bank</option>
+              <option value="next">Next</option>
+              <option value="santander">Santander</option>
+            </select>
+            <span class="mensagem">Campo obrigatório *</span>
+          </div>
+          <div class="column2">
+            <div class="input">
+              <label for="cartao">Número do Cartão</label>
+              <input type="text" placeholder="Número do cartão" id="numero-cartao" required>
+              <span class="mensagem">Campo obrigatório *</span>
+            </div>
+            <div class="input">
+              <label for="nome-cartao">Nome a ser escrito no cartão</label>
+              <input type="text" placeholder="Nome" id="nome-cartao" required>
+              <span class="mensagem">Campo obrigatório *</span>
+            </div>
+          </div>
+          <button type="button" class="btn-cadastrar" disabled>Cadastrar</button>
+        </form>
+      </div>
+      <div class="container-conteudo">
+        <div class="conteudo container">
+          <h1 class="titulo">Meus cartões</h1>
+          <div class="container-card">
+            <div class="novo-cartao">
+              <a href="#" class="adicionar-cartao">
+                <i class="material-icons">add</i>
+                <span>Adicionar cartão</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="js/script.js"></script>
+</body>
+
+</html>
