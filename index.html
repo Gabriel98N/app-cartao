@@ -17,7 +17,7 @@
 <body>
 
   <div class="modelo-cartao">
-    <div class="box-card" data-id>
+    <div class="cartao">
       <div class="excluir-cartao">
         <a href="#">
           <i class="material-icons">delete</i>
@@ -42,61 +42,55 @@
 
 
   <div class="estrutura">
-    <aside class="aside">
-      <ul class="menu-aside">
-        <li>
-          <a href="#">
-            <i class="material-icons">credit_card</i>
-            <span>Meus cartões</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="material-icons">bar_chart</i>
-            <span>Gráfico</span>
-          </a>
-        </li>
-      </ul>
-    </aside>
-    <div class="content">
-      <div class="container-formulario">
-        <form id="form">
-          <a href="#" class="fechar-form">
-            <i class="material-icons">close</i>
-          </a>
-          <h3>Cadastrar cartão</h3>
-          <div class="input">
-            <label for="bandeira">Instituição</label>
-            <select name="instituicao" id="instituicao" required>
-              <option value="" selected disabled>Selecionar</option>
-              <option value="nu">Nubank</option>
-              <option value="inter">Banco inter</option>
-              <option value="c6">C6 Bank</option>
-              <option value="next">Next</option>
-              <option value="santander">Santander</option>
-            </select>
-            <span class="mensagem">Campo obrigatório *</span>
-          </div>
-          <div class="column2">
+    <div class="navegacao-lateral">
+      <nav class="nav" aria-label="navegação lateral">
+
+      </nav>
+    </div>
+    <div class="conteudo">
+      <main class="main container">
+        <div class="container-formulario">
+          <form id="form">
+            <a href="#" class="fechar-form" aria-label="fechar">
+              <i class="material-icons">close</i>
+            </a>
+            <h3>Cadastrar cartão</h3>
             <div class="input">
-              <label for="cartao">Número do Cartão</label>
-              <input type="text" placeholder="Número do cartão" id="numero-cartao" required>
+              <label for="bandeira">Instituição</label>
+              <select name="instituicao" id="instituicao" required>
+                <option value="" selected disabled>Selecionar</option>
+                <option value="nu">Nubank</option>
+                <option value="inter">Banco inter</option>
+                <option value="c6">C6 Bank</option>
+                <option value="next">Next</option>
+                <option value="santander">Santander</option>
+                <option value="neon">Neon</option>
+                <option value="original">Banco original</option>
+                <option value="zero">CredCard Zero</option>
+                <option value="will">Will Bank</option>
+                <option value="meliuz">Méliuz</option>
+              </select>
               <span class="mensagem">Campo obrigatório *</span>
             </div>
-            <div class="input">
-              <label for="nome-cartao">Nome a ser escrito no cartão</label>
-              <input type="text" placeholder="Nome" id="nome-cartao" required>
-              <span class="mensagem">Campo obrigatório *</span>
+            <div class="column2">
+              <div class="input">
+                <label for="cartao">Número do Cartão</label>
+                <input type="text" placeholder="Número do cartão" id="numero-cartao" autocomplete="off" required>
+                <span class="mensagem">Campo obrigatório *</span>
+              </div>
+              <div class="input">
+                <label for="nome-cartao">Nome a ser escrito no cartão</label>
+                <input type="text" placeholder="Nome" id="nome-cartao" autocomplete="off" required>
+                <span class="mensagem">Campo obrigatório *</span>
+              </div>
             </div>
-          </div>
-          <button type="button" class="btn-cadastrar" disabled>Cadastrar</button>
-        </form>
-      </div>
-      <div class="container-conteudo">
-        <div class="conteudo container">
+            <button type="button" class="btn-cadastrar" disabled>Cadastrar</button>
+          </form>
+        </div>
+        <div class="container-cartao">
           <h1 class="titulo">Meus cartões</h1>
-          <div class="container-card">
-            <div class="novo-cartao">
+          <div class="box-cartao">
+            <div class="box-novo">
               <a href="#" class="adicionar-cartao">
                 <i class="material-icons">add</i>
                 <span>Adicionar cartão</span>
@@ -104,7 +98,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </div>
   <script type="module" src="js/script.js"></script>

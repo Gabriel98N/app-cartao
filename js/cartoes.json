@@ -4,27 +4,22 @@
       "instituicao": "Banco inter",
       "id": "inter",
       "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
       "logo": "img/logo/inter.svg"
     },
     {
       "instituicao": "Nubank",
       "id": "nu",
       "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
       "logo": "img/logo/nubank.svg"
     },
     {
       "instituicao": "C6 Bank",
       "id": "c6",
-      "bandeira": "img/logo-visa.png",
-      "nome_bandeira": "Visa",
+      "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
       "logo": "img/logo/c6-bank.svg"
-    },
-    {
-      "instituicao": "Mercado pago",
-      "id": "pago",
-      "bandeira": "img/logo-visa.png",
-      "nome_bandeira": "Visa",
-      "logo": "img/logo/mercado-pago.svg"
     },
     {
       "instituicao": "Next",
@@ -39,6 +34,41 @@
       "bandeira": "img/logo-visa.png",
       "nome_bandeira": "Visa",
       "logo": "img/logo/santander.svg"
+    },
+    {
+      "instituicao": "Neon",
+      "id": "neon",
+      "bandeira": "img/logo-visa.png",
+      "nome_bandeira": "Visa",
+      "logo": null
+    },
+    {
+      "instituicao": "Banco original",
+      "id": "original",
+      "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
+      "logo": "img/logo/banco-original.svg"
+    },
+    {
+      "instituicao": "CredCard Zero",
+      "id": "zero",
+      "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
+      "logo": null
+    },
+    {
+      "instituicao": "Will bank",
+      "id": "will",
+      "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
+      "logo": "img/logo/will.svg"
+    },
+    {
+      "instituicao": "Méliuz",
+      "id": "meliuz",
+      "bandeira": "img/master-card.png",
+      "nome_bandeira": "Mastercard",
+      "logo": null
     }
   ]
 }

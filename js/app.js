@@ -5,106 +5,122 @@ const els = (els) => document.querySelectorAll(els);
 const createEl = (tag) => document.createElement(tag);
 
 const validacao = Validacao("#form [required]", ".btn-cadastrar");
+const boxCartao = el(".box-cartao");
+const buttonAdicionar = el(".adicionar-cartao");
+const containerForm = el(".container-formulario");
+const fecharForm = el(".fechar-form");
+const buttonCadastrar = el(".btn-cadastrar");
+const inputInstituicao = el("#instituicao");
+const inputNumeroCartao = el("#numero-cartao");
+const inputNomeCartao = el("#nome-cartao");
+const ativo = "ativo";
+
+const jsonCartao = async () => {
+  const response = await fetch("js/cartoes.json");
+  const dados = await response.json();
+  return dados;
+};
+
+// funcão para fechar o formulario
+const fechar = () => {
+  containerForm.classList.remove(ativo);
+  validacao.zerarInput();
+};
 
 function App() {
-  const containerCard = el(".container-card");
-  const addCartao = el(".adicionar-cartao");
-  const inputInstituicao = el("#instituicao");
-  const inputNumeroCartao = el("#numero-cartao");
-  const inputNomeCartao = el("#nome-cartao");
-  const formulario = el(".container-formulario");
-  const fecharForm = el(".fechar-form");
-  const btnCadastrar = el(".btn-cadastrar");
-  const getArrCartao = window.localStorage.getItem("cartao");
-  let arrCartao = getArrCartao ? JSON.parse(getArrCartao) : [];
+  const storageCartao = window.localStorage.getItem("cartao");
+  let arrCartao = storageCartao ? JSON.parse(storageCartao) : [];
 
-  function areaFormulario() {
-    const fechar = () => formulario.classList.remove("ativar");
-
+  function areaFechar() {
+    // Fechar modal formulário
     fecharForm.addEventListener("click", (e) => {
       e.preventDefault();
       fechar();
     });
 
-    function handleClickFora(e) {
+    function handleClickFechar(e) {
       if (e.target === this) fechar();
     }
-    formulario.addEventListener("click", handleClickFora);
+    containerForm.addEventListener("click", handleClickFechar);
   }
 
-  async function adicionarCartao() {
-    const response = await fetch("js/cartoes.json");
-    const { cartao } = await response.json();
-
-    addCartao.addEventListener("click", (e) => {
+  function removerCartao(card) {
+    const excluirCartao = card.querySelector(".excluir-cartao");
+    excluirCartao.addEventListener("click", (e) => {
       e.preventDefault();
-      formulario.classList.add("ativar");
-      validacao.zerarInput();
-    });
-
-    btnCadastrar.addEventListener("click", (e) => {
-      e.preventDefault();
-      formulario.classList.remove("ativar");
-
-      const card = el(".modelo-cartao .box-card").cloneNode(true);
-      const logoBandeira = card.querySelector(".logo-bandeira img");
-      const logoCartao = card.querySelector(".logo-cartao img");
-      const numeroCartao = card.querySelector(".numero-cartao");
-      const nomeCartao = card.querySelector(".nome-cartao");
-
-      containerCard.prepend(card);
-      cartao.forEach((c) => {
-        const id = c.id;
-        const numCartao = inputNumeroCartao.value;
-        const nomCartao = inputNomeCartao.value;
-
-        if (inputInstituicao.value === id) {
-          card.setAttribute("data-id", id);
-          logoBandeira.src = c.bandeira;
-          logoCartao.src = c.logo;
-          numeroCartao.innerText = numCartao;
-          nomeCartao.innerText = nomCartao.toUpperCase();
-          arrCartao.push({
-            c,
-            numeroCartao: numCartao,
-            nomeCartao: nomCartao.toUpperCase(),
-          });
-          window.localStorage.setItem("cartao", JSON.stringify(arrCartao));
-        }
+      arrCartao = arrCartao.filter(({ cartao }) => {
+        return cartao.id !== card.dataset.id;
       });
-      btnCadastrar.disabled = true;
-      removerCartao();
+      localStorage.setItem("cartao", JSON.stringify(arrCartao));
+      card.remove();
     });
   }
 
   function salvarCartao() {
-    arrCartao.forEach((cartao) => {
-      const card = el(".modelo-cartao .box-card").cloneNode(true);
+    if (storageCartao) {
+      arrCartao.forEach(({ cartao, numero_cartao, nome_cartao }) => {
+        const card = el(".modelo-cartao .cartao").cloneNode(true);
+        const logoBandeira = card.querySelector(".logo-bandeira img");
+        const logoCartao = card.querySelector(".logo-cartao img");
+        const numeroCartao = card.querySelector(".numero-cartao");
+        const nomeCartao = card.querySelector(".nome-cartao");
+        const nomeBandeira = cartao.nome_bandeira;
+
+        card.setAttribute("data-id", cartao.id);
+        card.setAttribute("data-bandeira", nomeBandeira.toLowerCase());
+        logoBandeira.src = cartao.bandeira;
+        logoCartao.src = cartao.logo !== null ? cartao.logo : "";
+        numeroCartao.innerText = numero_cartao;
+        nomeCartao.innerText = nome_cartao;
+        boxCartao.prepend(card);
+        removerCartao(card);
+      });
+    }
+  }
+
+  async function cadastrarCartao() {
+    const getCartao = await jsonCartao();
+
+    buttonAdicionar.addEventListener("click", (e) => {
+      e.preventDefault();
+      containerForm.classList.add(ativo);
+    });
+
+    buttonCadastrar.addEventListener("click", () => {
+      const card = el(".modelo-cartao .cartao").cloneNode(true);
       const logoBandeira = card.querySelector(".logo-bandeira img");
       const logoCartao = card.querySelector(".logo-cartao img");
       const numeroCartao = card.querySelector(".numero-cartao");
       const nomeCartao = card.querySelector(".nome-cartao");
 
-      card.setAttribute("data-id", cartao.c.id);
-      logoBandeira.src = cartao.c.bandeira;
-      logoCartao.src = cartao.c.logo;
-      numeroCartao.innerText = cartao.numeroCartao;
-      nomeCartao.innerText = cartao.nomeCartao;
+      getCartao.cartao.forEach((cartao) => {
+        if (inputInstituicao.value === cartao.id) {
+          const nomeBandeira = cartao.nome_bandeira;
+          card.setAttribute("data-id", cartao.id);
+          card.setAttribute("data-bandeira", nomeBandeira.toLowerCase());
+          logoBandeira.src = cartao.bandeira;
+          logoCartao.src = cartao.logo;
+          numeroCartao.innerText = inputNumeroCartao.value;
+          nomeCartao.innerText = inputNomeCartao.value.toUpperCase();
 
-      containerCard.prepend(card);
+          arrCartao.push({
+            cartao,
+            numero_cartao: numeroCartao.innerText,
+            nome_cartao: nomeCartao.innerText,
+          });
+          localStorage.setItem("cartao", JSON.stringify(arrCartao));
+        }
+      });
+      boxCartao.prepend(card);
+      removerCartao(card);
+      fechar();
     });
-    removerCartao();
-  }
-
-  async function removerCartao() {
-    const excluirCard = containerCard.querySelectorAll(".excluir-cartao");
-    const cards = containerCard.querySelectorAll(".box-card");
   }
 
   function init() {
-    adicionarCartao();
-    areaFormulario();
+    cadastrarCartao();
     salvarCartao();
+    areaFechar();
   }
 
   return {
